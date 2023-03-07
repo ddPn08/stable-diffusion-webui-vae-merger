@@ -152,11 +152,15 @@ def create_ui():
                 weights = {}
                 with gr.Column():
                     for key in [
+                        "encoder.conv_in",
                         "encoder.down.0",
                         "encoder.down.1",
                         "encoder.down.2",
                         "encoder.down.3",
                         "encoder.mid",
+                        "encoder.norm_out",
+                        "encoder.conv_out",
+                        "quant_conv",
                     ]:
                         weights[key] = gr.Slider(
                             label=key, minimum=0, maximum=1, step=0.01, value=0.5
@@ -164,11 +168,15 @@ def create_ui():
 
                 with gr.Column():
                     for key in [
+                        "decoder.conv_out",
+                        "decoder.norm_out",
                         "decoder.up.0",
                         "decoder.up.1",
                         "decoder.up.2",
                         "decoder.up.3",
                         "decoder.mid",
+                        "decoder.conv_in",
+                        "post_quant_conv"
                     ]:
                         weights[key] = gr.Slider(
                             label=key, minimum=0, maximum=1, step=0.01, value=0.5
